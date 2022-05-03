@@ -15,13 +15,12 @@ data class OrderItem(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = -1,
     val quantity: Int = 0,
-    val unitPrice: BigDecimal,
-    val totalPrice: BigDecimal,
-    val observation: String,
-    @ManyToOne @JoinColumn(nullable = false) @JsonBackReference	val order: Order,
-    @ManyToOne @JoinColumn(nullable = false) val product: Product
+    val unitPrice: BigDecimal = BigDecimal.ZERO,
+    val totalPrice: BigDecimal = BigDecimal.ZERO,
+    val observation: String = "",
+    @ManyToOne @JoinColumn(nullable = false) @JsonBackReference	val order: Order = Order(),
+    @ManyToOne @JoinColumn(nullable = false) val product: Product = Product()
 ) {
-
     fun update(updated: OrderItem) = OrderItem(
         id = if (Objects.isNull(id)) this.id else updated.id,
         quantity = updated.quantity,

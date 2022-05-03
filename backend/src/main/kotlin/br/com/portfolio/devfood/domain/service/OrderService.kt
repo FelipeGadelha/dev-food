@@ -2,7 +2,7 @@ package br.com.portfolio.devfood.domain.service
 
 import br.com.portfolio.devfood.domain.exception.EntityInUseException
 import br.com.portfolio.devfood.domain.exception.EntityNotFoundException
-import br.com.portfolio.devfood.domain.model.Order
+import br.com.portfolio.devfood.domain.model.*
 import br.com.portfolio.devfood.domain.repository.OrderRepository
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.dao.EmptyResultDataAccessException
@@ -11,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class OrderService(
-    private val orderRepository: OrderRepository
+    private val orderRepository: OrderRepository,
+    private val userService: UserService,
+    private val cityService: CityService,
+    private val productService: ProductService
 ) {
     companion object {
         private const val MSG_ORDER_NOT_FOUND = "Pedido com o ID %d não existe"
@@ -22,20 +25,29 @@ class OrderService(
     fun findAll(): List<Order> = orderRepository.findAll()
 
     @Transactional
-    fun findById(id: Long): Order = orderRepository.findById(id)
-        .orElseThrow { EntityNotFoundException(String.format(MSG_ORDER_NOT_FOUND, id)) }
+    fun findByCode(code: String): Order = orderRepository.findByCode(code)
+        .orElseThrow { EntityNotFoundException(String.format(MSG_ORDER_NOT_FOUND, code)) }
 
-//    @Transactional
-//    fun save(order: Order): Order {
-//        val category = categoryService.findById(product.category.id)
-//        return orderRepository.save(product.copy(category = category))
-//    }
-//    @Transactional
-//    fun update(id: Long, update: Order): Order {
-//        val product = this.findById(id).update(update)
-//        return this.save(product)
-//    }
+    @Transactional
+    fun save(order: Order): Order {
+        val client = userService.findById(order.client.id)
+        val city = cityService.findById(order.addressDelivery.city.id)
+        val itens: List<OrderItem> = order.ordersItens.map { item ->
+            val product = productService.findById(item.product.id)
+            return@map item.copy(
+                product = product,
+                order = order
+            )
+         }
 
+        val result = Order(
+            client = client,
+            ordersItens = itens,
+            addressDelivery = order.addressDelivery.copy(city = city)
+        )
+        result.addOrderStatus(OrderStatusType.CREATED)
+        return orderRepository.save(result)
+    }
     @Transactional
     fun deleteById(id: Long) {
         try {

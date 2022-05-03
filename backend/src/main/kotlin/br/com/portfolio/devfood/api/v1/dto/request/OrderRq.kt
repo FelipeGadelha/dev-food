@@ -1,18 +1,16 @@
 package br.com.portfolio.devfood.api.v1.dto.request
 
 import br.com.portfolio.devfood.domain.model.Order
+import br.com.portfolio.devfood.domain.model.User
 
 class OrderRq(
-    val client: Long,
-    val address: AddressRq,
-    val itens: List<OrderItemRq>
+    private val client: Long,
+    private val address: AddressRq,
+    private val itens: List<OrderItemRq>
 ) {
-//    fun toEntity() =
-//        Order(
-//            client = client,
-//
-//
-//
-//        )
-
+    fun toEntity() = Order(
+            client = User(client),
+            addressDelivery = address.toEntity(),
+            ordersItens = itens.map { it.toEntity() }
+        )
 }

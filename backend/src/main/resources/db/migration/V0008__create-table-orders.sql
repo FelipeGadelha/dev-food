@@ -1,6 +1,6 @@
 CREATE TABLE orders (
 	id SERIAL NOT NULL,
-	subtotal NUMERIC(10,2) NOT NULL,
+    code VARCHAR(255),
   	total_value NUMERIC(10,2) NOT NULL,
 
 	address_cep VARCHAR(9) NOT NULL,

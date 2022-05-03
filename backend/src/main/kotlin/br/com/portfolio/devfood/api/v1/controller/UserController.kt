@@ -3,6 +3,7 @@ package br.com.portfolio.devfood.api.v1.controller
 import br.com.portfolio.devfood.api.v1.dto.View
 import br.com.portfolio.devfood.api.v1.dto.request.ProductRq
 import br.com.portfolio.devfood.api.v1.dto.request.UserRq
+import br.com.portfolio.devfood.api.v1.dto.request.UserUpdateRq
 import br.com.portfolio.devfood.api.v1.dto.response.ProductRs
 import br.com.portfolio.devfood.api.v1.dto.response.UserRs
 import br.com.portfolio.devfood.domain.model.Product
@@ -38,7 +39,7 @@ class UserController(
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: Long, @RequestBody userRq: UserRq): ResponseEntity<UserRs> {
+    fun update(@PathVariable id: Long, @RequestBody userRq: UserUpdateRq): ResponseEntity<UserRs> {
         val user = userRq.toEntity()
         return ResponseEntity.ok(UserRs(userService.update(id, user)))
     }
