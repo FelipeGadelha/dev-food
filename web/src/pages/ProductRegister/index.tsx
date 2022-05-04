@@ -14,7 +14,7 @@ import {
   ContentRow
 } from './styles';
 
-const RegisterProduct: React.FC = () => {
+const ProductRegister: React.FC = () => {
   return (
     <Container>
       <Header>
@@ -39,4 +39,4 @@ const RegisterProduct: React.FC = () => {
   );
 }
 
-export default RegisterProduct;
+export default ProductRegister;
