@@ -5,6 +5,8 @@ import GlobalStyle from './styles/global';
 import BaseBar from './components/BaseBar';
 import Header from './components/Header';
 import FoodMenu from './pages/FoodMenu';
+import Dashboard from './pages/Dashboard';
+import RegisterProduct from './pages/RegisterProduct';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/food-menu" element={<FoodMenu />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/register-product" element={<RegisterProduct />} />
         </Routes>
       </Browser>
     </Grid>

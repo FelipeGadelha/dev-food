@@ -18,12 +18,12 @@ export default createGlobalStyle`
   
   body, input, textarea, button {
     font: 500 1.6rem Inter, sans-serif;
-    color: white;
+    color: #000000;
   }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: #000000;
   }
   h1 {
     font-size: 4rem;
