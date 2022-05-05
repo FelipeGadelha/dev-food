@@ -26,7 +26,7 @@ const FoodMenu: React.FC = () => {
             <SearchInput placeholder='buscar...' />
             <Icon />
           </Search>
-          <New to="/register-product"><GoIcons.GoPlus/>Novo</New>
+          <New to="/product-register"><GoIcons.GoPlus/>Novo</New>
         </Actions>
       </Header>
       <Content>

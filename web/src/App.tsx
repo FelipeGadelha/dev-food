@@ -6,7 +6,7 @@ import BaseBar from './components/BaseBar';
 import Header from './components/Header';
 import FoodMenu from './pages/FoodMenu';
 import Dashboard from './pages/Dashboard';
-import RegisterProduct from './pages/RegisterProduct';
+import ProductRegister from './pages/ProductRegister';
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/food-menu" element={<FoodMenu />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/register-product" element={<RegisterProduct />} />
+          <Route path="/product-register" element={<ProductRegister />} />
         </Routes>
       </Browser>
     </Grid>

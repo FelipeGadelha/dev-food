@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  padding: 3rem 6rem;
+  padding: 1.5rem 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +26,7 @@ export const Header = styled.div`
 export const HeaderLeft = styled.div`
   width: 50%;
   > h1 {
+    font-size: 3.5rem;
     color: #000000;
   }
 `;
@@ -65,7 +66,7 @@ export const ContentRow = styled.div`
 
 const sharedStyle = css`
   font-size: 1.8rem;
-  height: 12rem;
+  height: 8rem;
   padding: 1rem;
   border-radius: 0.8rem;
   border: none;
@@ -81,4 +82,31 @@ const sharedStyle = css`
 
 export const TextArea = styled.textarea`
   ${sharedStyle}
+`;
+
+export const Groups = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+type ButtonProps = {
+  color?: string
+  background?: string
+}
+
+export const Button = styled.button<ButtonProps>`
+  width: 20%;
+  padding: 1.4rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: ${({ background }) => (background)};
+  color: ${({ color }) => (color)};
+  transition: 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(90%);
+  }
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
 `;

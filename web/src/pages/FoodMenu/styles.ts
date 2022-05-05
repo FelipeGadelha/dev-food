@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  padding: 3rem 6rem;
+  padding: 2rem 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +27,7 @@ export const Header = styled.div`
 export const HeaderLeft = styled.div`
   width: 50%;
   > h1 {
+    font-size: 3.5rem;
     color: #000000;
   }
 `;
