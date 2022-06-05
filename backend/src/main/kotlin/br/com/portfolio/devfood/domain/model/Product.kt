@@ -12,6 +12,8 @@ data class Product(
     val description: String = "",
     val price: BigDecimal = BigDecimal.ZERO,
     val active: Boolean = true,
+    val imageLink: String = "",
+    val deleteImageLink: String = "",
     @ManyToOne @JoinColumn(nullable = false)
     val category: Category = Category()
 ) {
@@ -21,6 +23,8 @@ data class Product(
             name = update.name,
             description = update.description,
             price = update.price,
+            imageLink = update.imageLink,
+            deleteImageLink = update.deleteImageLink,
             active = update.active,
             category = this.category
         )

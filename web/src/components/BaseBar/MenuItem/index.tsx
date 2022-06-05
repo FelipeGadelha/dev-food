@@ -3,15 +3,15 @@ import React, { ReactElement } from 'react';
 import { Container, MenuIcon } from './styles';
 
 type IMenuItemProps = {
-  title: string,
-  icon: ReactElement<any, any>
+  title: string
+  Icon: React.ElementType
   path: string
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({title, icon, path}) => {
+const MenuItem: React.FC<IMenuItemProps> = ({title, Icon, path}) => {
   return (
     <Container to={path}>
-      <MenuIcon>{icon}</MenuIcon>{title}
+      <MenuIcon><Icon/></MenuIcon>{title}
     </Container>
   );
 }

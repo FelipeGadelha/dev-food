@@ -37,7 +37,7 @@ export const Actions = styled.div`
   justify-content: end;
 `;
 
-export const Back = styled(Link)`
+export const Back = styled.div`
   padding: 1rem;
   text-decoration: none;
   color: #E02041;
@@ -46,6 +46,7 @@ export const Back = styled(Link)`
   justify-content: center;
   font-weight: 600;
   border-radius: 1rem;
+  cursor: pointer;
 `;
 
 export const Content = styled.form`
@@ -68,7 +69,7 @@ const sharedStyle = css`
   font-size: 1.8rem;
   height: 8rem;
   padding: 1rem;
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   border: none;
   outline: none;
   color: #333;
@@ -97,9 +98,9 @@ type ButtonProps = {
 
 export const Button = styled.button<ButtonProps>`
   width: 20%;
-  padding: 1.4rem;
+  padding: 1rem;
   border: none;
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   background: ${({ background }) => (background)};
   color: ${({ color }) => (color)};
   transition: 0.2s ease-in-out;

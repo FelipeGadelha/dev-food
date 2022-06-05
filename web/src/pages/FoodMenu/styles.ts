@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  padding: 2rem 6rem;
+  padding: 1.5rem 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,7 +44,7 @@ export const Search = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0rem 0.4rem 2rem rgba(0, 0, 0, 0.25);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   overflow: hidden;
   padding: 0.8rem;
   margin-right: 2rem;
@@ -78,7 +78,7 @@ export const New = styled(Link)`
   justify-content: center;
   font-weight: 600;
   box-shadow: 0rem 0.4rem 2rem rgba(0, 0, 0, 0.25);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   transition: 0.2s ease-in-out;
   &:hover {
     filter: brightness(90%);

@@ -1,5 +1,6 @@
 package br.com.portfolio.devfood.domain.service
 
+import br.com.portfolio.devfood.domain.component.UploadImgBB
 import br.com.portfolio.devfood.domain.exception.EntityInUseException
 import br.com.portfolio.devfood.domain.exception.EntityNotFoundException
 import br.com.portfolio.devfood.domain.model.Product

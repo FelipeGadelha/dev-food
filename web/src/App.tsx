@@ -1,25 +1,15 @@
-import styled from 'styled-components'
 import { BrowserRouter as Browser, Routes, Route } from 'react-router-dom';
 
-import GlobalStyle from './styles/global';
+import GlobalStyle, { Grid } from './styles/global';
 import BaseBar from './components/BaseBar';
 import Header from './components/Header';
 import FoodMenu from './pages/FoodMenu';
 import Dashboard from './pages/Dashboard';
 import ProductRegister from './pages/ProductRegister';
+import Order from './pages/Order';
+import Invoice from './pages/Invoice';
 
 function App() {
-
-  const Grid = styled.div`
-    display: grid;
-    height: 100vh;
-    grid-template-columns: minmax(8rem, max-content) auto;
-    grid-template-rows: minmax(7rem, max-content) auto;
-    grid-template-areas:  "baseBar header header header header"
-                          "baseBar main main main main"
-                          "baseBar main main main main"
-                          "baseBar main main main main";
-  `;
   return (
     <Grid>
       <GlobalStyle />
@@ -27,9 +17,11 @@ function App() {
         <BaseBar />
         <Header />
         <Routes>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/food-menu" element={<FoodMenu />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product-register" element={<ProductRegister />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/invoice" element={<Invoice />} />
         </Routes>
       </Browser>
     </Grid>

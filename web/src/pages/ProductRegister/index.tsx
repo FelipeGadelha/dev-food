@@ -1,61 +1,62 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as BiIcons from 'react-icons/bi';
-import InputStyle from '../../components/InputStyle';
-import SelectStyle from '../../components/SelectStyle';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
 
-import { 
-  Container,
-  Header,
-  HeaderLeft,
-  Actions,
-  Back,
-  Content,
-  TextArea,
-  ContentRow,
-  Groups,
-  Button
-} from './styles';
+import { Categories } from '../../types/Category';
+import { api } from '../../services/api';
 
-const ProductRegister: React.FC = () => {
-  
+import * as S from './styles';
+import { useNavigate } from 'react-router-dom';
+
+function ProductRegister() {
+
   const [category, setCategory] = useState('')
+  const [categories, setCategories] = useState<Categories>([])
+  const navigate = useNavigate();
+  useEffect(() => {
+    api.get(`/v1/categories`)
+      .then( response => {
+        setCategories(response.data)
+        console.log(response.data)
+      }
+    )
+  }, [])
 
   return (
-    <Container>
-      <Header>
-        <HeaderLeft>
+    <S.Container>
+      <S.Header>
+        <S.HeaderLeft>
           <h1>Adicionar Produto</h1>
-        </HeaderLeft>
-        <Actions>
-          <Back to="/food-menu"><BiIcons.BiLeftArrowAlt/>Voltar</Back>
-        </Actions>
-      </Header>
-      <Content>
-        <InputStyle type="Text" name="title" title='Título:'/>
-        <ContentRow>
-          <InputStyle type="Text" name="preco" title='Preço:' width='40%'/>
-          <SelectStyle 
+        </S.HeaderLeft>
+        <S.Actions>
+          <S.Back onClick={() => navigate(-1)}>
+            <BiIcons.BiLeftArrowAlt />Voltar
+          </S.Back>
+        </S.Actions>
+      </S.Header>
+      <S.Content>
+        <Input type="text" name="title" label='Título:'/>
+        <S.ContentRow>
+          <Input type="Text" name="preco" label='Preço:' width='40%'/>
+          <Select
             label="Categoria:"
             name="category"
             value={category}
             onChange={e => setCategory(e.target.value)}
-            options={[
-              {value: "0", label: "Prato Principal"},
-              {value: "1", label: "Sobremesa"},
-              {value: "2", label: "Bebida"}
-            ]}
+            options={categories.map(c => ({value: c.id.toString(), label: c.name}))}
           />
-        </ContentRow>
-        <InputStyle type="Text" name="urlImage" title='Url da Imagem:'/>
+        </S.ContentRow>
+        <Input type="file" name="urlImage" label='Imagem:'/>
         <label htmlFor='description'>Descrição:</label>
-        <TextArea name="description"/>
-        <Groups>
-          <Button>Cancelar</Button>
-          <Button background='#E02041' color='#FFF'>Salvar</Button>
-        </Groups>
-      </Content>
-    </Container>
+        <S.TextArea name="description"/>
+        <S.Groups>
+          <S.Button>Cancelar</S.Button>
+          <S.Button background='#E02041' color='#FFF'>Salvar</S.Button>
+        </S.Groups>
+      </S.Content>
+    </S.Container>
   );
 }
 

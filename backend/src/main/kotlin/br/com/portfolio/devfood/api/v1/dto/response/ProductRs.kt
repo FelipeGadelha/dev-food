@@ -8,6 +8,7 @@ class ProductRs private constructor(
     val name: String,
     val description: String,
     val price: BigDecimal,
+    val imageLink: String,
     val active: Boolean
 ) {
     constructor(product: Product):
@@ -16,7 +17,7 @@ class ProductRs private constructor(
             name = product.name,
             description = product.description,
             price = product.price,
+            imageLink = product.imageLink,
             active = product.active
         )
-
 }

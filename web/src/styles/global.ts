@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   * {
@@ -34,6 +34,15 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   };
+`;
 
-
+export const Grid = styled.div`
+  display: grid;
+  height: 100vh;
+  grid-template-columns: minmax(8rem, max-content) auto;
+  grid-template-rows: minmax(7rem, max-content) auto;
+  grid-template-areas:  "baseBar header header header header"
+                        "baseBar main main main main"
+                        "baseBar main main main main"
+                        "baseBar main main main main";
 `;
