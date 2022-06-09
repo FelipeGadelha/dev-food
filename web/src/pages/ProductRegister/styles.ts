@@ -77,12 +77,18 @@ const sharedStyle = css`
   margin-top: 0.5rem;
   resize: none;
   &:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 `;
 
 export const TextArea = styled.textarea`
   ${sharedStyle}
+`;
+
+export const Error = styled.span`
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    color: #E02041;
 `;
 
 export const Groups = styled.div`

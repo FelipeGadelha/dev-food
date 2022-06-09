@@ -59,7 +59,7 @@ export const Icon = styled(GoIcons.GoSearch)`
   border-radius: 50%;
 `;
 
-export const SearchInput = styled.input.attrs({ 
+export const SearchInput = styled.input.attrs({
   type: 'text',
 })`
   width: 90%;
@@ -88,6 +88,7 @@ export const New = styled(Link)`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 5rem;
   /* width: 100%; */
   /* overflow-y: auto;
   ::-webkit-scrollbar {

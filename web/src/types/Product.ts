@@ -11,3 +11,11 @@ export type Product = {
 }
 
 export type Products = Product[]
+
+export type ProductFormData = {
+  name: string,
+  price: string,
+  description: string
+  category: string,
+  image: File
+}

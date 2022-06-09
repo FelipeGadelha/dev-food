@@ -33,3 +33,9 @@ export const Label = styled.label`
     margin-left: 1.5rem;
     color: #9E9E9E;
 `;
+
+export const Error = styled.span`
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    color: #E02041;
+`;

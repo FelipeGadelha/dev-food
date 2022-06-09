@@ -17,7 +17,6 @@ export const Container = styled.div<InputProps>`
   }
 `;
 
-
 export const Label = styled.label`
     font-size: 1.8rem;
     margin-left: 1.5rem;
@@ -37,3 +36,8 @@ export const SelectStyle = styled.select`
   margin-top: 0.5rem;
 `;
 
+export const Error = styled.span`
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    color: #E02041;
+`;

@@ -1,20 +1,28 @@
-import React, { InputHTMLAttributes } from 'react';
+import {
+    InputHTMLAttributes,
+    forwardRef,
+    ForwardRefRenderFunction
+  } from 'react';
+import { FieldError } from 'react-hook-form';
 
-import { Container, InputStyle, Label } from './styles';
+import { Container, InputStyle, Label, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string
   name: string
+  label?: string
   width?: string
+  fieldError?: FieldError | undefined
 }
 
-const Input: React.FC<InputProps> = ({label, name, width, ...rest}) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps>
+  = ({name, label, width, fieldError, ...rest}, ref) => {
   return (
     <Container width={width}>
-      <Label htmlFor={name}>{label}</Label>
-      <InputStyle id={name} {...rest}/>
+      {label && <Label htmlFor={name}>{label}</Label>}
+      {fieldError && <Error>{fieldError.message}</Error>}
+      <InputStyle id={name} name={name} ref={ref} {...rest}/>
     </Container>
   );
 }
 
-export default Input;
+export default forwardRef(Input);

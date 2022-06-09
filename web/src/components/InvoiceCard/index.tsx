@@ -2,12 +2,12 @@ import React from 'react';
 
 import * as S from './styles';
 
-type RevenueCardTypes = {
+type InvoiceCardTypes = {
   date: string,
   totalMonth: string
 }
 
-const RevenueCard: React.FC<RevenueCardTypes> = ({date, totalMonth}) => {
+const InvoiceCard: React.FC<InvoiceCardTypes> = ({date, totalMonth}) => {
   return (
     <S.Container>
       <S.Date><strong>{date}</strong></S.Date>
@@ -16,4 +16,4 @@ const RevenueCard: React.FC<RevenueCardTypes> = ({date, totalMonth}) => {
   );
 }
 
-export default RevenueCard;
+export default InvoiceCard;
