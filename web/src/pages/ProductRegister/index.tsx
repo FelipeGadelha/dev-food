@@ -12,6 +12,7 @@ import { Categories } from '../../types/Category';
 import { ProductFormData } from '../../types/Product'
 import { api } from '../../services/api';
 
+import { toast } from 'react-toastify'
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,12 +45,11 @@ function ProductRegister() {
 
   useEffect(() => {
     api.get(`/v1/categories`)
-      .then( response => {
-        setCategories(response.data)
-        console.log(response.data)
-      }
-    )
-  }, [])
+    .then( response => {
+      setCategories(response.data)
+      console.log(response.data)
+    }
+  )}, [])
 
   const {
     handleSubmit,
@@ -74,8 +74,10 @@ function ProductRegister() {
 
     await api.post('/v1/products', formData, {
       headers: { "Content-Type": "multipart/form-data" }
-    });
-    reset()
+    })
+    .then((response) => {toast.error("Produto salvo com sucesso! " + response.data.id)})
+    .then(() => reset())
+    .catch(() => {toast.warn("Erro ao salvar o produto!")})
   }
 
   return (
@@ -102,7 +104,6 @@ function ProductRegister() {
           />
           <Select
             label="Categoria"
-            defaultValue={""}
             {...register('category')}
             fieldError={errors.category}
             value={getValues('category')}
@@ -122,6 +123,7 @@ function ProductRegister() {
         <S.TextArea id='description' {...register('description')}/>
         <S.Groups>
           <S.Button onClick={() => {reset()}}>Cancelar</S.Button>
+          {/* <Input name='reset' type="reset" /> */}
           <S.Button
             background='#E02041'
             color='#FFF'

@@ -1,5 +1,7 @@
 import { BrowserRouter as Browser, Routes, Route } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import GlobalStyle, { Grid } from './styles/global';
 import BaseBar from './components/BaseBar';
 import Header from './components/Header';
@@ -12,6 +14,7 @@ import Invoice from './pages/Invoice';
 function App() {
   return (
     <Grid>
+      <ToastContainer />
       <GlobalStyle />
       <Browser>
         <BaseBar />
