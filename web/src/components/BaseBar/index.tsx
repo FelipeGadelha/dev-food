@@ -17,6 +17,7 @@ const BaseBar: React.FC = () => {
       <MenuItens>
         <MenuItem path="/dashboard" Icon={ RiIcons.RiDashboardLine } title="Dashboard"/>
         <MenuItem path="/food-menu" Icon={ BiIcons.BiFoodMenu } title="Cardápio"/>
+        <MenuItem path="/category" Icon={ MdIcons.MdOutlineCategory } title="Categoria"/>
         <MenuItem path="/order" Icon={ MdIcons.MdOutlineShoppingCart } title="Pedidos" />
         <MenuItem path="/invoice" Icon={ MdIcons.MdOutlineAttachMoney } title="Faturamento" />
         <MenuItem path="#" Icon={ MdIcons.MdLogout } title="Sair" />

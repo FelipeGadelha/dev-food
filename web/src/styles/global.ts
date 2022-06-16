@@ -15,7 +15,7 @@ export default createGlobalStyle`
     width: 100vw;
     height: 100vh;
   }
-  
+
   body, input, textarea, button {
     font: 500 1.6rem Inter, sans-serif;
     color: #000000;

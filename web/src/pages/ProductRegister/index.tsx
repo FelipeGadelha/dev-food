@@ -75,8 +75,10 @@ function ProductRegister() {
     await api.post('/v1/products', formData, {
       headers: { "Content-Type": "multipart/form-data" }
     })
-    .then((response) => {toast.error("Produto salvo com sucesso! " + response.data.id)})
-    .then(() => reset())
+    .then((response) => {
+      toast.error("Produto salvo com sucesso! " + response.data.id)
+      reset()
+    })
     .catch(() => {toast.warn("Erro ao salvar o produto!")})
   }
 
